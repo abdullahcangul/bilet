@@ -35,7 +35,7 @@ public class Musteri {
 
     @ManyToMany(
         fetch = FetchType.LAZY,
-        mappedBy="musteri"
+        mappedBy="musteriler"
     )
     private List<Sefer> sefeler;
 }

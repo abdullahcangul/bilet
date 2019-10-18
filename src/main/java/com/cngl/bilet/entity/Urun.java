@@ -35,7 +35,7 @@ public class Urun {
     @NotNull
     private BigDecimal ucret;
 
-    @ManyToMany( fetch = FetchType.LAZY, mappedBy = "urun")
+    @ManyToMany( fetch = FetchType.LAZY, mappedBy = "urunler")
     private List<Ucak> ucaklar;
     
 }

@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,9 +22,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Kupon {
+    
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO) 
     private Long id;
+    @Size(max = 50, min = 2, message = "{Kupon.isim.invalid}")
+    @NotEmpty(message = "Lutfen isim girin")
     private String isim;
     private Float indirimMiktari;
     //Todo: bunun için bir tablo olusturulsunmu
@@ -33,7 +38,7 @@ public class Kupon {
         cascade = CascadeType.ALL,
         optional = false
     )
-    @JoinColumn(name = "takvim_id")
+    @JoinColumn(name = "havayolu_id")
     private Havayolu havayolu;
 
 }

@@ -22,7 +22,7 @@ public class Rol {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO) 
     private Long id;
-    @Size(max = 50, min = 2, message = "{Urun.isim.invalid}")
+    @Size(max = 50, min = 2, message = "{Rol.isim.invalid}")
     @NotEmpty(message = "Lutfen isim girin")
     private String isim;
 }

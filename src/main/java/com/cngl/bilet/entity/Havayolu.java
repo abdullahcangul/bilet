@@ -45,6 +45,6 @@ public class Havayolu {
     )
     private List<Kupon> kuponlar;
 
-    @ManyToMany(fetch = FetchType.LAZY,mappedBy="havayolu")
+    @ManyToMany(fetch = FetchType.LAZY,mappedBy="havayollari")
     private List<EngelliRota> engelliRotalar;
 }
