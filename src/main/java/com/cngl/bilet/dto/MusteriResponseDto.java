@@ -2,8 +2,6 @@ package com.cngl.bilet.dto;
 
 import java.util.List;
 
-import javax.validation.constraints.NotNull;
-
 import com.cngl.bilet.entity.Kisi;
 import com.cngl.bilet.entity.Sefer;
 
@@ -18,8 +16,7 @@ public class MusteriResponseDto {
 
     private Long id;
     private String pnr;
-    @NotNull
-    private Boolean cinsiyet;
+    private Integer koltukNo;
 
     private Kisi kisi; 
     private List<Sefer> sefeler;

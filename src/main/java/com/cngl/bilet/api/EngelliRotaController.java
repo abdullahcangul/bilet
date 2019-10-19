@@ -4,10 +4,9 @@ import java.util.List;
 
 import com.cngl.bilet.dto.EngelliRotaRequestDto;
 import com.cngl.bilet.dto.EngelliRotaResponseDto;
-import com.cngl.bilet.service.Impl.EngelliRotaServiceImpl;
+import com.cngl.bilet.service.impl.EngelliRotaServiceImpl;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,27 +28,27 @@ public class EngelliRotaController {
     }
 
     @GetMapping
-    public ResponseEntity<List<EngelliRotaResponseDto>> get(){
-        return ResponseEntity.ok(engelliRotaService.getAll());
+    public ResponseEntity<List<EngelliRotaResponseDto>> tumunuGetir(){
+        return ResponseEntity.ok(engelliRotaService.tumunuGetir());
     }
 
     @GetMapping("/id")
-    public ResponseEntity<EngelliRotaResponseDto> getOne(@PathVariable(value="id") Long id) throws Exception{
-        return ResponseEntity.ok(engelliRotaService.findById(id));
+    public ResponseEntity<EngelliRotaResponseDto> idYeGoreGetir(@PathVariable(value="id") Long id) throws Exception{
+        return ResponseEntity.ok(engelliRotaService.idYeGoreGetir(id));
     }
 
     @PostMapping
-    public ResponseEntity<EngelliRotaResponseDto> save(@RequestBody EngelliRotaRequestDto entity) {
-        return ResponseEntity.ok(engelliRotaService.saveOrUpdate(entity));
+    public ResponseEntity<EngelliRotaResponseDto> kaydet(@RequestBody EngelliRotaRequestDto entity) {
+        return ResponseEntity.ok(engelliRotaService.kaydetVeyaGuncelle(entity));
     }
 
     @PutMapping
-    public ResponseEntity<EngelliRotaResponseDto> update(@RequestBody EngelliRotaRequestDto entity) {
-        return ResponseEntity.ok(engelliRotaService.saveOrUpdate(entity));
+    public ResponseEntity<EngelliRotaResponseDto> guncelle(@RequestBody EngelliRotaRequestDto entity) {
+        return ResponseEntity.ok(engelliRotaService.kaydetVeyaGuncelle(entity));
     }
 
     @DeleteMapping("/id")
-    public ResponseEntity<Boolean> delete(@PathVariable(value="id") Long id){
+    public ResponseEntity<Boolean> sil(@PathVariable(value="id") Long id){
         return ResponseEntity.ok(true);
     }
 }

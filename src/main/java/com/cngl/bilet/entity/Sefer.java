@@ -3,6 +3,7 @@ package com.cngl.bilet.entity;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -35,6 +36,8 @@ public class Sefer {
     private String isim;
     @NotNull
     private Float km;
+    @Column(name = "kapi_No",nullable = false)
+    private Integer kapiNo;
 
     @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private List<Musteri> musteriler;

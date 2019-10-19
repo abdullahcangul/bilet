@@ -11,7 +11,7 @@ public class MusteriRequestDto {
 
     private Long id;
     private String pnr;
-    private Boolean cinsiyet;
+    private Integer koltukNo;
     
     private Long seferId;
 }

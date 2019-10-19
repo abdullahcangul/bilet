@@ -27,6 +27,7 @@ public class SeferResponseDto {
     private String isim;
     @NotNull
     private Float km;
+    private Integer kapiNo;
 
 
     private List<Musteri> musteriler;

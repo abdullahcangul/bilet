@@ -19,6 +19,7 @@ public class SeferRequestDto {
     private String isim;
     @NotNull
     private Float km;
+    private Integer kapiNo;
 
     private Long kalkisHavalimaniId;
     private Long inishavalimaniId;

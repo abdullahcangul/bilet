@@ -26,8 +26,8 @@ public class Musteri {
     private Long id;
     @Column(unique=true)
     private String pnr;
-    //Todo:cinsiyeti düzenle
-    private Boolean cinsiyet;
+    @Column(name = "koltuk_no",nullable = false)
+    private Integer koltukNo;
 
     @OneToOne
     @MapsId

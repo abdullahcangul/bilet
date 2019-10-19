@@ -1,4 +1,4 @@
-package com.cngl.bilet.service.Impl;
+package com.cngl.bilet.service.impl;
 
 import java.util.List;
 
@@ -23,27 +23,25 @@ public class EngelliRotaServiceImpl implements EngelliRotaService{
         this.modelMapper = modelMapper;
     }
 
-    public List<EngelliRotaResponseDto> getAll(){
+    public List<EngelliRotaResponseDto> tumunuGetir(){
         return modelMapper.map(engelliRotaRepository.findAll(),
             new TypeToken<List<EngelliRotaResponseDto>>() {}.getType());
     }
     
-    public EngelliRotaResponseDto findById(Long id) throws Exception {
-
+    public EngelliRotaResponseDto idYeGoreGetir(Long id) throws Exception {
         return modelMapper.
             map(engelliRotaRepository.findById(id).orElseThrow(()-> new Exception("ff")), EngelliRotaResponseDto.class);
     }
 
-    public EngelliRotaResponseDto saveOrUpdate(EngelliRotaRequestDto engelliRotaRequestDto){
+    public EngelliRotaResponseDto kaydetVeyaGuncelle(EngelliRotaRequestDto engelliRotaRequestDto){
         return modelMapper.map(engelliRotaRepository.
             save(modelMapper.map(engelliRotaRequestDto,EngelliRota.class)),EngelliRotaResponseDto.class);
     }
 
-    public void delete(Long id) throws Exception {
+    public void sil(Long id) throws Exception {
         engelliRotaRepository.delete(
             engelliRotaRepository.findById(id).orElseThrow(()->new Exception("Engelli Rota bulanamadı"))
         );
     }
-   
 
 }
