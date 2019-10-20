@@ -56,7 +56,7 @@ public class Ucak {
         mappedBy = "ucak",
         orphanRemoval = true
     )
-    private List<KoltukTur> koltukTurleri;
+    private List<Koltuk> koltuklar;
 
     @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private List<Urun> urunler;

@@ -2,12 +2,13 @@ package com.cngl.bilet.entity;
 
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.MapsId;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -23,19 +24,17 @@ import lombok.NoArgsConstructor;
 public class Musteri {
 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO) 
     private Long id;
-    @Column(unique=true)
-    private String pnr;
-    @Column(name = "koltuk_no",nullable = false)
-    private Integer koltukNo;
 
     @OneToOne
     @MapsId
     private Kisi kisi; 
 
-    @ManyToMany(
+    @OneToMany(
         fetch = FetchType.LAZY,
-        mappedBy="musteriler"
+        mappedBy = "musteri",
+        orphanRemoval = true
     )
-    private List<Sefer> sefeler;
+    private List<Bilet> biletler;
 }

@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -21,10 +22,10 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-@Table(name="koltuk_turleri")
+@Table(name="koltuklar")
 @AllArgsConstructor
 @NoArgsConstructor
-public class KoltukTur {
+public class Koltuk {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO) 
     private Long id;
@@ -32,7 +33,7 @@ public class KoltukTur {
     @NotEmpty(message = "Lutfen isim girin")
     private String isim;
     @NotNull
-    private Integer koltukSayisi;
+    private String sinif;
     @NotNull
     private BigDecimal koltukUcreti;
 
@@ -43,4 +44,8 @@ public class KoltukTur {
     )
     @JoinColumn(name = "ucak_id")
     private Ucak ucak;
+
+    
+    @OneToOne(mappedBy = "koltuk")
+    private Bilet bilet;
 }

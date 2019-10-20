@@ -33,15 +33,27 @@ public class HavalimaniServiceImpl implements HavalimaniService {
             map(havalimaniRepository.findById(id).orElseThrow(()-> new Exception("ff")), HavalimaniResponseDto.class);
     }
 
-    public HavalimaniResponseDto kaydetVeyaGuncelle(HavalimaniRequestDto havalimaniRequestDto){
+    public HavalimaniResponseDto kaydet(HavalimaniRequestDto havalimaniRequestDto){
         return modelMapper.map(havalimaniRepository.
             save(modelMapper.map(havalimaniRequestDto,Havalimani.class)),HavalimaniResponseDto.class);
     }
 
-    public void sil(Long id) throws Exception {
-        havalimaniRepository.delete(
-            havalimaniRepository.findById(id).orElseThrow(()->new Exception("Engelli Rota bulanamadı"))
-        );
+    public HavalimaniResponseDto guncelle(HavalimaniRequestDto havalimaniRequestDto) throws Exception {
+        Havalimani havalimani=havalimaniRepository.findById(havalimaniRequestDto.getId()).
+            orElseThrow(()->new Exception());
+        havalimani.setAdres(havalimaniRequestDto.getAdres());
+        havalimani.setIsim(havalimaniRequestDto.getIsim());
+
+        return modelMapper.map(havalimaniRepository.
+            save(havalimani),HavalimaniResponseDto.class);
+    }
+
+    public Boolean aktifPasifEt(Long id) throws Exception {
+        Havalimani havalimani=havalimaniRepository.findById(id).
+            orElseThrow(()->new Exception("Engelli Rota bulanamadı"));
+        havalimani.setAktifMi(havalimani.getAktifMi()?true:false);
+        return havalimani.getAktifMi();
+        
     }
     
 }

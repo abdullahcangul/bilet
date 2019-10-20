@@ -46,12 +46,14 @@ public class Kisi {
     @PastOrPresent
     @Column(name = "dogum_tarihi")
     private LocalDate dogumTarihi;
+
+    private Boolean aktifMi=Boolean.TRUE;
     
     @OneToOne(mappedBy = "kisi", cascade = CascadeType.ALL)
-    private Kullanici kullanici;
+    private Kullanici kullanici=new Kullanici();
 
     @OneToOne(mappedBy = "kisi", cascade = CascadeType.ALL)
-    private Musteri musteri;
+    private Musteri musteri=new Musteri();
 
 
 }

@@ -1,7 +1,11 @@
 package com.cngl.bilet.dto;
 
+import java.util.List;
+
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+
+import com.cngl.bilet.entity.Kullanici;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,4 +20,6 @@ public class RolResponseDto {
     @Size(max = 50, min = 2, message = "{RolResponseDto.isim.invalid}")
     @NotEmpty(message = "Lutfen isim girin")
     private String isim;
+
+    private List<Kullanici> kullanicilar;
 }

@@ -7,11 +7,15 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class MusteriRequestDto {
+public class BiletRequestDto {
 
     private Long id;
+
     private String pnr;
     private Integer koltukNo;
 
-    private Long kisiId;
+    private Long seferId;
+    private Long musteriId;
+    private Long koltukId;
+    
 }

@@ -32,8 +32,24 @@ public class EngelliRotaServiceImpl implements EngelliRotaService{
         return modelMapper.
             map(engelliRotaRepository.findById(id).orElseThrow(()-> new Exception("ff")), EngelliRotaResponseDto.class);
     }
+    
 
     public EngelliRotaResponseDto kaydetVeyaGuncelle(EngelliRotaRequestDto engelliRotaRequestDto){
+        return modelMapper.map(engelliRotaRepository.
+            save(modelMapper.map(engelliRotaRequestDto,EngelliRota.class)),EngelliRotaResponseDto.class);
+    }
+
+    public EngelliRotaResponseDto kaydet(EngelliRotaRequestDto engelliRotaRequestDto){
+        EngelliRota engelliRota=modelMapper.map(engelliRotaRequestDto,EngelliRota.class);
+        return null;
+       /* if(!engelliRotaRequestDto.get().isEmpty())
+        urun.setUcaklar(ucakRepository.findAllById(urunRequestDto.getUcakid()));
+
+        return modelMapper.map(engelliRotaRepository.
+            save(,EngelliRotaResponseDto.class);*/
+    }
+
+    public EngelliRotaResponseDto guncelle(EngelliRotaRequestDto engelliRotaRequestDto){
         return modelMapper.map(engelliRotaRepository.
             save(modelMapper.map(engelliRotaRequestDto,EngelliRota.class)),EngelliRotaResponseDto.class);
     }

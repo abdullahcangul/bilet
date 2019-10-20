@@ -9,6 +9,7 @@ public interface SeferService {
 
     public List<SeferResponseDto> tumunuGetir();
     public SeferResponseDto idYeGoreGetir(Long id) throws Exception;
-    public SeferResponseDto kaydetVeyaGuncelle(SeferRequestDto seferRequestDto);
-    public void sil(Long id) throws Exception;   
+    public SeferResponseDto kaydet(SeferRequestDto seferRequestDto)throws Exception;
+    public SeferResponseDto guncelle(SeferRequestDto seferRequestDto)throws Exception;
+    public Boolean aktifPasifEt(Long id) throws Exception ;   
 }

@@ -2,6 +2,8 @@ package com.cngl.bilet.api;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import com.cngl.bilet.dto.EngelliRotaRequestDto;
 import com.cngl.bilet.dto.EngelliRotaResponseDto;
 import com.cngl.bilet.service.impl.EngelliRotaServiceImpl;
@@ -38,17 +40,18 @@ public class EngelliRotaController {
     }
 
     @PostMapping
-    public ResponseEntity<EngelliRotaResponseDto> kaydet(@RequestBody EngelliRotaRequestDto entity) {
+    public ResponseEntity<EngelliRotaResponseDto> kaydet(@RequestBody @Valid EngelliRotaRequestDto entity) {
         return ResponseEntity.ok(engelliRotaService.kaydetVeyaGuncelle(entity));
     }
 
     @PutMapping
-    public ResponseEntity<EngelliRotaResponseDto> guncelle(@RequestBody EngelliRotaRequestDto entity) {
+    public ResponseEntity<EngelliRotaResponseDto> guncelle(@RequestBody @Valid EngelliRotaRequestDto entity) {
         return ResponseEntity.ok(engelliRotaService.kaydetVeyaGuncelle(entity));
     }
 
     @DeleteMapping("/id")
-    public ResponseEntity<Boolean> sil(@PathVariable(value="id") Long id){
+    public ResponseEntity<Boolean> sil(@PathVariable(value="id") Long id) throws Exception {
+        engelliRotaService.sil(id);
         return ResponseEntity.ok(true);
     }
 }

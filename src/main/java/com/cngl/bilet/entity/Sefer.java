@@ -10,8 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -39,8 +39,7 @@ public class Sefer {
     @Column(name = "kapi_No",nullable = false)
     private Integer kapiNo;
 
-    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    private List<Musteri> musteriler;
+    private Boolean aktifPasifEt=true;
 
     @ManyToOne(
         fetch = FetchType.LAZY,
@@ -83,5 +82,12 @@ public class Sefer {
     )
     @JoinColumn(name = "takvim_id")
     private Takvim takvim;
+
+    @OneToMany(
+        fetch = FetchType.LAZY,
+        mappedBy = "sefer",
+        orphanRemoval = true
+    )
+    private List<Bilet> biletler;
 
 }

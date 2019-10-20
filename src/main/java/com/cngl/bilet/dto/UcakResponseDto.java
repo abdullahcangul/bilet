@@ -7,7 +7,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.cngl.bilet.entity.KoltukTur;
+import com.cngl.bilet.entity.Koltuk;
 import com.cngl.bilet.entity.Sefer;
 import com.cngl.bilet.entity.Urun;
 
@@ -34,6 +34,6 @@ public class UcakResponseDto {
 
 
     private List<Sefer> seferler;
-    private List<KoltukTur> koltukTurleri;
+    private List<Koltuk> koltuklar;
     private List<Urun> urunler;
 }

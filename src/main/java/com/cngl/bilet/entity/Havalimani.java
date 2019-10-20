@@ -1,5 +1,6 @@
 package com.cngl.bilet.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -35,19 +36,21 @@ public class Havalimani {
     @NotEmpty(message = "Lutfen isim girin")
     private String sehir;
 
+    private Boolean aktifMi=Boolean.TRUE;
+
     @OneToMany(
         fetch = FetchType.LAZY,
         mappedBy = "kalkisHavalimani",
         orphanRemoval = true
     )
-    private List<Sefer> kalkishavalimaniSeferleri;
+    private List<Sefer> kalkishavalimaniSeferleri=new ArrayList<Sefer>();
 
     @OneToMany(
         fetch = FetchType.LAZY,
         mappedBy = "InisHavalimani",
         orphanRemoval = true
     )
-    private List<Sefer> inishavalimaniSeferleri;
+    private List<Sefer> inishavalimaniSeferleri=new ArrayList<Sefer>();
 
 
 }

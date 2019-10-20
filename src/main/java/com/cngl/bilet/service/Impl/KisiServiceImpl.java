@@ -33,15 +33,32 @@ public class KisiServiceImpl implements KisiService{
             map(kisiRepository.findById(id).orElseThrow(()-> new Exception("ff")), KisiResponseDto.class);
     }
 
-    public KisiResponseDto kaydetVeyaGuncelle(KisiRequestDto kisiRequestDto){
+    public KisiResponseDto kaydet(KisiRequestDto kisiRequestDto){
         return modelMapper.map(kisiRepository.
             save(modelMapper.map(kisiRequestDto,Kisi.class)),KisiResponseDto.class);
     }
 
-    public void sil(Long id) throws Exception {
-        kisiRepository.delete(
-            kisiRepository.findById(id).orElseThrow(()->new Exception("Engelli Rota bulanamadı"))
-        );
+    public KisiResponseDto guncelle(KisiRequestDto kisiRequestDto)throws Exception{
+        Kisi kisi=kisiRepository.findById(kisiRequestDto.getId()).
+            orElseThrow(()->new Exception("Kisi bulunamadı"));
+        kisi.setDogumTarihi(kisiRequestDto.getDogumTarihi());
+        kisi.setEmail(kisiRequestDto.getEmail());
+        kisi.setIsim(kisiRequestDto.getIsim());
+        kisi.setSoyisim(kisiRequestDto.getSoyisim());
+        kisi.setTc(kisiRequestDto.getTc());
+        kisi.setTel(kisiRequestDto.getTel());
+
+        return modelMapper.map(kisiRepository.save(kisi),KisiResponseDto.class);
+    }
+
+
+    public Boolean aktifPasifEt(Long id) throws Exception {
+        
+        Kisi kisi=kisiRepository.findById(id).
+            orElseThrow(()->new Exception("Engelli Rota bulanamadı"));
+        kisi.setAktifMi(kisi.getAktifMi()?true:false);
+        return kisi.getAktifMi();  
+        
     }
     
 }

@@ -10,7 +10,9 @@ import com.cngl.bilet.service.TakvimService;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
+import org.springframework.stereotype.Service;
 
+@Service
 public class TakvimServiceImpl implements TakvimService {
 
     
@@ -32,14 +34,23 @@ public class TakvimServiceImpl implements TakvimService {
             map(takvimRepository.findById(id).orElseThrow(()-> new Exception("ff")), TakvimResponseDto.class);
     }
 
-    public TakvimResponseDto kaydetVeyaGuncelle(TakvimRequestDto takvimRequestDto){
+    public TakvimResponseDto kaydet(TakvimRequestDto takvimRequestDto){
         return modelMapper.map(takvimRepository.
             save(modelMapper.map(takvimRequestDto,Takvim.class)),TakvimResponseDto.class);
     }
 
-    public void sil(Long id) throws Exception {
-        takvimRepository.delete(
-            takvimRepository.findById(id).orElseThrow(()->new Exception("Engelli Rota bulanamadı"))
-        );
+    public TakvimResponseDto guncelle(TakvimRequestDto takvimRequestDto) throws Exception {
+       Takvim takvim=takvimRepository.findById(takvimRequestDto.getId()).orElseThrow(()-> new Exception("ff"));
+       takvim.setKalkisZamanı(takvimRequestDto.getKalkisZamanı());
+       takvim.setVarisZamani(takvimRequestDto.getVarisZamani());
+       return modelMapper.map(takvimRepository.
+            save(modelMapper.map(takvimRequestDto,Takvim.class)),TakvimResponseDto.class);
+    }
+
+    public Boolean aktifPasifEt(Long id) throws Exception {
+        Takvim takvim=takvimRepository.findById(id).
+            orElseThrow(()->new Exception("Takvim bilgisi bulanamadı"));
+        takvim.setAktifMi(takvim.getAktifMi()?true:false);
+        return takvim.getAktifMi();
     }
 }

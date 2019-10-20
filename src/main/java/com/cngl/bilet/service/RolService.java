@@ -9,6 +9,7 @@ public interface RolService {
 
     public List<RolResponseDto> tumunuGetir();
     public RolResponseDto idYeGoreGetir(Long id) throws Exception;
-    public RolResponseDto kaydetVeyaGuncelle(RolRequestDto rolRequestDto);
+    public RolResponseDto kaydet(RolRequestDto rolRequestDto);
+    public RolResponseDto guncelle(RolRequestDto rolRequestDto)throws Exception;
     public void sil(Long id) throws Exception;    
 }

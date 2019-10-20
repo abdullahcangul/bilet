@@ -19,5 +19,5 @@ public class KullaniciRequestDto {
     @NotEmpty(message = "Lutfen sifre girin")
     private String sifre;
 
-        private List<Long> RolId;
+    private List<Long> RolId;
 }

@@ -9,7 +9,8 @@ public interface KullaniciService {
 
     public List<KullaniciResponseDto> tumunuGetir();
     public KullaniciResponseDto idYeGoreGetir(Long id) throws Exception;
-    public KullaniciResponseDto kaydetVeyaGuncelle(KullaniciRequestDto kullaniciRequestDto);
+    public KullaniciResponseDto kaydet(KullaniciRequestDto kullaniciRequestDto);
+    public KullaniciResponseDto guncelle(KullaniciRequestDto kullaniciRequestDto) throws Exception;
     public void sil(Long id) throws Exception;
     
 }

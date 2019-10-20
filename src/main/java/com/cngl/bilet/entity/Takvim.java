@@ -1,6 +1,7 @@
 package com.cngl.bilet.entity;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -31,10 +32,13 @@ public class Takvim {
     @NotNull
     private LocalDateTime varisZamani;
 
+    private Boolean aktifMi=true;
+
+
     @OneToMany(
         fetch = FetchType.LAZY,
         mappedBy = "takvim",
         orphanRemoval = true
     )
-    private List<Sefer> seferler;
+    private List<Sefer> seferler=new ArrayList<Sefer>();
 }

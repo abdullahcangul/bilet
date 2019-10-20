@@ -9,7 +9,8 @@ public interface UrunService {
     
     public List<UrunResponseDto> tumunuGetir();
     public UrunResponseDto idYeGoreGetir(Long id) throws Exception;
-    public UrunResponseDto kaydetVeyaGuncelle(UrunRequestDto urunRequestDto);
+    public UrunResponseDto kaydet(UrunRequestDto urunRequestDto) ;
+    public UrunResponseDto guncelle(UrunRequestDto urunRequestDto)throws Exception ;
     public void sil(Long id) throws Exception;
     
 }

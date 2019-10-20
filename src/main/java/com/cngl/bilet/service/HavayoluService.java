@@ -8,7 +8,7 @@ import com.cngl.bilet.dto.HavayoluResponseDto;
 public interface HavayoluService {
 
     public List<HavayoluResponseDto> tumunuGetir();
-    public HavayoluResponseDto idYeGoreGetir(Long id) throws Exception;
-    public HavayoluResponseDto kaydetVeyaGuncelle(HavayoluRequestDto havayoluRequestDto);
+    public HavayoluResponseDto kaydet(HavayoluRequestDto havayoluRequestDto);
+    public HavayoluResponseDto guncelle(HavayoluRequestDto havayoluRequestDto) throws Exception;
     public void sil(Long id) throws Exception;
 }

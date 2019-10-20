@@ -9,6 +9,7 @@ public interface TakvimService {
 
     public List<TakvimResponseDto> tumunuGetir();
     public TakvimResponseDto idYeGoreGetir(Long id) throws Exception;
-    public TakvimResponseDto kaydetVeyaGuncelle(TakvimRequestDto takvimRequestDto);
-    public void sil(Long id) throws Exception;
+    public TakvimResponseDto kaydet(TakvimRequestDto takvimRequestDto);
+    public TakvimResponseDto guncelle(TakvimRequestDto takvimRequestDto)throws Exception;
+    public Boolean aktifPasifEt(Long id) throws Exception;
 }

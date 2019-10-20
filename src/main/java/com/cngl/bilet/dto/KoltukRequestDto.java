@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class KoltukTurRequestDto {
+public class KoltukRequestDto {
     
     private Long id;
     @Size(max = 50, min = 2, message = "{KoltukTurRequestDto.isim.invalid}")

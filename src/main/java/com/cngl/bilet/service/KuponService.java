@@ -9,7 +9,8 @@ public interface KuponService {
     
     public List<KuponResponseDto> tumunuGetir();
     public KuponResponseDto idYeGoreGetir(Long id) throws Exception;
-    public KuponResponseDto kaydetVeyaGuncelle(KuponRequestDto kuponRequestDto);
+    public KuponResponseDto kaydet(KuponRequestDto kuponRequestDto)throws Exception;
+    public KuponResponseDto guncelle(KuponRequestDto kuponRequestDto)throws Exception;
     public void sil(Long id) throws Exception;
     
 }

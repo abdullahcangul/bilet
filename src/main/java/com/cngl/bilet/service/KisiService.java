@@ -9,7 +9,8 @@ public interface KisiService {
 
     public List<KisiResponseDto> tumunuGetir();
     public KisiResponseDto idYeGoreGetir(Long id) throws Exception;
-    public KisiResponseDto kaydetVeyaGuncelle(KisiRequestDto kisiRequestDto);
-    public void sil(Long id) throws Exception;
+    public KisiResponseDto kaydet(KisiRequestDto kisiRequestDto);
+    public KisiResponseDto guncelle(KisiRequestDto kisiRequestDto) throws Exception;
+    public Boolean aktifPasifEt(Long id) throws Exception;
 
 }

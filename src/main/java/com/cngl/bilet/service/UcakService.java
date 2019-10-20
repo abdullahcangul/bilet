@@ -9,7 +9,8 @@ public interface UcakService {
 
     public List<UcakResponseDto> tumunuGetir();
     public UcakResponseDto idYeGoreGetir(Long id) throws Exception;
-    public UcakResponseDto kaydetVeyaGuncelle(UcakRequestDto ucakRequestDto);
+    public UcakResponseDto kaydet(UcakRequestDto ucakRequestDto);
+    public UcakResponseDto guncelle(UcakRequestDto ucakRequestDto)throws Exception;
     public void sil(Long id) throws Exception;
     
 }

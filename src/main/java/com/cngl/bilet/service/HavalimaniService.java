@@ -12,6 +12,7 @@ public interface HavalimaniService {
 
     public List<HavalimaniResponseDto> tumunuGetir();
     public HavalimaniResponseDto idYeGoreGetir(Long id) throws Exception;
-    public HavalimaniResponseDto kaydetVeyaGuncelle(HavalimaniRequestDto havalimaniRequestDto);
-    public void sil(Long id) throws Exception;
+    public HavalimaniResponseDto kaydet(HavalimaniRequestDto havalimaniRequestDto);
+    public HavalimaniResponseDto guncelle(HavalimaniRequestDto havalimaniRequestDto)throws Exception;
+    public Boolean aktifPasifEt(Long id) throws Exception;
 }

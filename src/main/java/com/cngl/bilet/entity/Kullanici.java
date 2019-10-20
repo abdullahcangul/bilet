@@ -1,7 +1,12 @@
 package com.cngl.bilet.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -28,4 +33,7 @@ public class Kullanici {
     @OneToOne
     @MapsId
     private Kisi kisi;
+
+    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    private List<Rol> roller;
 }

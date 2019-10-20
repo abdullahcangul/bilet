@@ -19,5 +19,4 @@ public class MusteriResponseDto {
     private Integer koltukNo;
 
     private Kisi kisi; 
-    private List<Sefer> sefeler;
 }
