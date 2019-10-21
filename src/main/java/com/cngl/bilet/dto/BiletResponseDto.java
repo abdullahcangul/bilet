@@ -1,8 +1,5 @@
 package com.cngl.bilet.dto;
 
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 import com.cngl.bilet.entity.Koltuk;
 import com.cngl.bilet.entity.Musteri;

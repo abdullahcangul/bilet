@@ -1,5 +1,6 @@
 package com.cngl.bilet.entity;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import javax.persistence.CascadeType;
@@ -24,24 +25,27 @@ import lombok.NoArgsConstructor;
 @Table(name="kisiler")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Kisi {
+public class Kisi implements Serializable {
+
+
+    private static final long serialVersionUID = 4319894073540989267L;
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
-    @Size(max = 20, min = 3, message = "{Kisi.isim.invalid}")
-    @NotEmpty(message = "Lutfen isim girin")
+    @Size(max = 20, min = 3)
+    @NotEmpty()
     private String isim;
-    @Size(max = 20, min = 3, message = "{Kisi.isim.invalid}")
-    @NotEmpty(message = "Lutfen soyisim girin")
+    @Size(max = 20, min = 3)
+    @NotEmpty()
     private String soyisim;
     //Todo:tc validasyonu yapılacak
     private String tc;
-    @Email(message="lütfen gecerli bir eposta girin")
+    @Email()
     private String email;
     @Column(length=10)
-    @NotEmpty(message = "Lütfen telefon numarası girin")
+    @NotEmpty()
     private String tel;
     @PastOrPresent
     @Column(name = "dogum_tarihi")

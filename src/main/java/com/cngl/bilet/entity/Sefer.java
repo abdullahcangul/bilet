@@ -1,5 +1,6 @@
 package com.cngl.bilet.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -26,13 +27,14 @@ import lombok.NoArgsConstructor;
 @Table(name="seferler")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Sefer {
+public class Sefer implements Serializable {
 
+    private static final long serialVersionUID = 3616359874086638009L;
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO) 
     private Long id;
-    @Size(max = 50, min = 2, message = "{Urun.isim.invalid}")
-    @NotEmpty(message = "Lutfen isim girin")
+    @Size(max = 50, min = 2)
+    @NotEmpty()
     private String isim;
     @NotNull
     private Float km;

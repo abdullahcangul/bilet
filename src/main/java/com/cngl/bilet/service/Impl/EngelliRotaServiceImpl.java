@@ -6,6 +6,7 @@ import com.cngl.bilet.dto.EngelliRotaRequestDto;
 import com.cngl.bilet.dto.EngelliRotaResponseDto;
 import com.cngl.bilet.entity.EngelliRota;
 import com.cngl.bilet.repository.EngelliRotaRepository;
+import com.cngl.bilet.repository.HavayoluRepository;
 import com.cngl.bilet.service.EngelliRotaService;
 
 import org.modelmapper.ModelMapper;
@@ -16,10 +17,14 @@ import org.springframework.stereotype.Service;
 public class EngelliRotaServiceImpl implements EngelliRotaService{
     
     private final EngelliRotaRepository engelliRotaRepository;
+    private final HavayoluRepository havayoluRepository;
     private final ModelMapper modelMapper;
 
-    public EngelliRotaServiceImpl(EngelliRotaRepository engelliRotaRepository,ModelMapper modelMapper) {
+    public EngelliRotaServiceImpl(EngelliRotaRepository engelliRotaRepository,
+    HavayoluRepository havayoluRepository,
+    ModelMapper modelMapper) {
         this.engelliRotaRepository=engelliRotaRepository;
+        this.havayoluRepository=havayoluRepository;
         this.modelMapper = modelMapper;
     }
 
@@ -41,15 +46,15 @@ public class EngelliRotaServiceImpl implements EngelliRotaService{
 
     public EngelliRotaResponseDto kaydet(EngelliRotaRequestDto engelliRotaRequestDto){
         EngelliRota engelliRota=modelMapper.map(engelliRotaRequestDto,EngelliRota.class);
-        return null;
-       /* if(!engelliRotaRequestDto.get().isEmpty())
-        urun.setUcaklar(ucakRepository.findAllById(urunRequestDto.getUcakid()));
-
-        return modelMapper.map(engelliRotaRepository.
-            save(,EngelliRotaResponseDto.class);*/
+        if(!engelliRotaRequestDto.getHavalimaniId().isEmpty())
+        engelliRota.setHavayollari(havayoluRepository.findAllById(engelliRotaRequestDto.getHavalimaniId()));
+        return modelMapper.map(engelliRotaRepository.save(engelliRota),EngelliRotaResponseDto.class);
     }
 
-    public EngelliRotaResponseDto guncelle(EngelliRotaRequestDto engelliRotaRequestDto){
+    public EngelliRotaResponseDto guncelle(EngelliRotaRequestDto engelliRotaRequestDto)throws Exception{
+        EngelliRota engelliRota=engelliRotaRepository.findById(engelliRotaRequestDto.getId())
+            .orElseThrow(()->new Exception("Engelli Rota bulanamadı"));
+        engelliRota.setHavayollari(havayoluRepository.findAllById(engelliRotaRequestDto.getHavalimaniId()));
         return modelMapper.map(engelliRotaRepository.
             save(modelMapper.map(engelliRotaRequestDto,EngelliRota.class)),EngelliRotaResponseDto.class);
     }

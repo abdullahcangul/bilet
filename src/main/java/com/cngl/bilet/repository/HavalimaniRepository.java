@@ -6,5 +6,4 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface HavalimaniRepository extends JpaRepository<Havalimani,Long> {
 
-    
 }

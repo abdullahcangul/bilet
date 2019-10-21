@@ -1,5 +1,6 @@
 package com.cngl.bilet.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -22,12 +23,14 @@ import lombok.NoArgsConstructor;
 @Table(name="Havayollari")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Havayolu {
+public class Havayolu implements Serializable {
+
+    private static final long serialVersionUID = -2108020073124239272L;
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO) 
     private long id;
-    @Size(max = 50, min = 3, message = "{Havayolu.isim.invalid}")
-    @NotEmpty(message = "Lutfen isim girin")
+    @Size(max = 50, min = 3 )
+    @NotEmpty()
     private String isim;
 
     @OneToMany(

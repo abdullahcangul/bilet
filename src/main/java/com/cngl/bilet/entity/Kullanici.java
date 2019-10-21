@@ -1,5 +1,6 @@
 package com.cngl.bilet.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -22,12 +23,16 @@ import lombok.NoArgsConstructor;
 @Table(name="kullanicilar")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Kullanici {
+public class Kullanici implements Serializable {
 
+    /**
+     *
+     */
+    private static final long serialVersionUID = -2039683044214082286L;
     @Id
     private Long id;
-    @Size(max = 20, min = 3, message = "{Kullanici.sifre.invalid}")
-    @NotEmpty(message = "Lutfen sifre girin")
+    @Size(max = 20, min = 3)
+    @NotEmpty()
     private String sifre;
     
     @OneToOne

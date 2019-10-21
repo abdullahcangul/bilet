@@ -1,5 +1,7 @@
 package com.cngl.bilet.dto;
 
+import java.util.List;
+
 import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
@@ -16,4 +18,6 @@ public class EngelliRotaRequestDto {
     private Long kalkısHavaAlaniId;
     @NotNull(message="Kalkis havalimani boş gecilemez")
     private Long inisHavaAlaniId; 
+
+    private List<Long> havalimaniId;
 }

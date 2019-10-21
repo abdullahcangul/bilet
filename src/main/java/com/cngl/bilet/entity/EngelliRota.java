@@ -1,5 +1,6 @@
 package com.cngl.bilet.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -8,7 +9,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.IdClass;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -21,16 +21,19 @@ import lombok.NoArgsConstructor;
 @Table(name="engelli_rotalar")
 @AllArgsConstructor
 @NoArgsConstructor
-@IdClass(EngelliRotaPk.class)
-public class EngelliRota {
+//@IdClass(EngelliRotaPk.class)
+public class EngelliRota implements Serializable {
+
+    private static final long serialVersionUID = -8677757423276079783L;
+
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO) 
     private Long id;
     //Todo: 2 kere aynı hava alanı girilemez
 
-    private Long GidisHavaAlaniId;
+    private Long kalkisHavaAlaniId;
 
-    private Long GonusHavaAlaniId;
+    private Long varisHavaAlaniId;
 
     @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private List<Havayolu> havayollari;

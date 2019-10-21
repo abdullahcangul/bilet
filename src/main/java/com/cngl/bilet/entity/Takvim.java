@@ -1,5 +1,6 @@
 package com.cngl.bilet.entity;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,8 +23,9 @@ import lombok.NoArgsConstructor;
 @Table(name="takvimler")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Takvim {
+public class Takvim implements Serializable {
 
+    private static final long serialVersionUID = -997522412727218642L;
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO) 
     private Long id;

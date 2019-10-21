@@ -9,4 +9,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface BiletRepository extends JpaRepository<Bilet, Long> {
 
     public Optional<Bilet> findByPnr(String pnr);
+
 }

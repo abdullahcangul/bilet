@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class EngelliRotaPk {
+public class EngelliRotaPk  {
 
     private Long GidisHavaAlaniId;
     private Long GonusHavaAlaniId;

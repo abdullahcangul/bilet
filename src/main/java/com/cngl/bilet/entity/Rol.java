@@ -1,5 +1,6 @@
 package com.cngl.bilet.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -21,13 +22,14 @@ import lombok.NoArgsConstructor;
 @Table(name="roller")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Rol {
+public class Rol implements Serializable {
 
+    private static final long serialVersionUID = -510215468574428445L;
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO) 
     private Long id;
-    @Size(max = 50, min = 2, message = "{Rol.isim.invalid}")
-    @NotEmpty(message = "Lutfen isim girin")
+    @Size(max = 50, min = 2)
+    @NotEmpty()
     private String isim;
 
     @ManyToMany( fetch = FetchType.LAZY, mappedBy = "roller")

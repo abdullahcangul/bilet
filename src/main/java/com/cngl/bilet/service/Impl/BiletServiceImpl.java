@@ -1,6 +1,9 @@
 package com.cngl.bilet.service.impl;
 
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
+import java.util.UUID;
 
 import com.cngl.bilet.dto.BiletRequestDto;
 import com.cngl.bilet.dto.BiletResponseDto;
@@ -56,6 +59,7 @@ public class BiletServiceImpl implements BiletService {
     public BiletResponseDto kaydet(BiletRequestDto biletRequestDto) throws Exception{
         
         Bilet bilet=modelMapper.map(biletRequestDto,Bilet.class);
+        bilet.setPnr(UUID.randomUUID().toString());
         bilet= biletBagimliliklariniAta(bilet,biletRequestDto);
         return modelMapper.map(biletRepository.
             save(bilet),BiletResponseDto.class);
@@ -63,9 +67,10 @@ public class BiletServiceImpl implements BiletService {
 
     public BiletResponseDto guncelle(BiletRequestDto biletRequestDto) throws Exception{
         
+        
         Bilet bilet=biletRepository.findById(biletRequestDto.getId()).
             orElseThrow(()->new Exception("Güncellenecek bilet bulunamadı"));
-        bilet= biletBagimliliklariniAta(bilet,biletRequestDto);
+        
         return modelMapper.map(biletRepository.
             save(bilet),BiletResponseDto.class);
     }
@@ -83,6 +88,11 @@ public class BiletServiceImpl implements BiletService {
     public Boolean aktifPasifEt(Long id) throws Exception {
         Bilet bilet=biletRepository.findById(id).
             orElseThrow(()->new Exception("Engelli Rota bulanamadı"));
+        LocalDateTime biletZamani=bilet.getSefer().getTakvim().getKalkisZamanı();
+        Long kalanSaat=ChronoUnit.HOURS.between(biletZamani, LocalDateTime.now());
+        if(kalanSaat<2l){
+            throw new Exception("Bilet iptal edilemez");
+        }
         bilet.setAktifMi(bilet.getAktifMi()?false:true);
         return bilet.getAktifMi();
     }

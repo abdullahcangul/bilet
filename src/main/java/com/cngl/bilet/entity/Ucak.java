@@ -1,5 +1,6 @@
 package com.cngl.bilet.entity;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -26,13 +27,14 @@ import lombok.NoArgsConstructor;
 @Table(name="ucaklar")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Ucak {
+public class Ucak implements Serializable {
 
+    private static final long serialVersionUID = 6289420356421141744L;
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO) 
     private Long id;
-    @Size(max = 50, min = 2, message = "{Urun.isim.invalid}")
-    @NotEmpty(message = "Lutfen isim girin")
+    @Size(max = 50, min = 2)
+    @NotEmpty()
     private String isim;
     @NotNull
     @Column(name = "pilot_sayisi")

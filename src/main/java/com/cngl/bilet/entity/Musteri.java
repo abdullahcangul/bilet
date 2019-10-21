@@ -1,5 +1,6 @@
 package com.cngl.bilet.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -21,7 +22,9 @@ import lombok.NoArgsConstructor;
 @Table(name="musteriler")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Musteri {
+public class Musteri implements Serializable {
+
+    private static final long serialVersionUID = 6452770081784247197L;
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO) 

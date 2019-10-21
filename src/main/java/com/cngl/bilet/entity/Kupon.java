@@ -1,5 +1,7 @@
 package com.cngl.bilet.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -21,13 +23,14 @@ import lombok.NoArgsConstructor;
 @Table(name="kuponlar")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Kupon {
+public class Kupon implements Serializable {
     
+    private static final long serialVersionUID = 605650770120560302L;
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO) 
     private Long id;
-    @Size(max = 50, min = 2, message = "{Kupon.isim.invalid}")
-    @NotEmpty(message = "Lutfen isim girin")
+    @Size(max = 50, min = 2)
+    @NotEmpty()
     private String isim;
     private Float indirimMiktari;
     //Todo: bunun için bir tablo olusturulsunmu

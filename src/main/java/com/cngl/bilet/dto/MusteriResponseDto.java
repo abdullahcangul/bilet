@@ -1,10 +1,7 @@
 package com.cngl.bilet.dto;
 
-import java.util.List;
 
 import com.cngl.bilet.entity.Kisi;
-import com.cngl.bilet.entity.Sefer;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

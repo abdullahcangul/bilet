@@ -43,6 +43,8 @@ public class HavayoluServiceImpl implements HavayoluService {
 
     public HavayoluResponseDto kaydet(HavayoluRequestDto havayoluRequestDto){
         Havayolu havayolu=modelMapper.map(havayoluRequestDto,Havayolu.class);
+        if(!havayoluRequestDto.getEngelliRotaId().isEmpty())
+        havayolu.setEngelliRotalar(engelliRotaRepository.findAllById(havayoluRequestDto.getEngelliRotaId()));
         //Todo:Composite Key e bak
         return modelMapper.map(havayoluRepository.
             save(havayolu),HavayoluResponseDto.class);
@@ -50,7 +52,8 @@ public class HavayoluServiceImpl implements HavayoluService {
 
     public HavayoluResponseDto guncelle(HavayoluRequestDto havayoluRequestDto) throws Exception {
         Havayolu havayolu=havayoluRepository.findById(havayoluRequestDto.getId()).
-            orElseThrow(()->new Exception("Engelli Rota bulanamadı"));
+            orElseThrow(()->new Exception("Engelli Rota bulanamadı"));    
+        havayolu.setEngelliRotalar(engelliRotaRepository.findAllById(havayoluRequestDto.getEngelliRotaId()));
         havayolu.setIsim(havayoluRequestDto.getIsim());
         return modelMapper.map(havayoluRepository.
             save(havayolu),HavayoluResponseDto.class);

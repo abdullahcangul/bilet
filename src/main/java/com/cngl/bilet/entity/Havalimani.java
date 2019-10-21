@@ -1,5 +1,6 @@
 package com.cngl.bilet.entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,18 +23,21 @@ import lombok.NoArgsConstructor;
 @Table(name="havalimanlari")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Havalimani {
+public class Havalimani implements Serializable{
+
+
+    private static final long serialVersionUID = 6370667069199410336L;
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO) 
     private Long id;
-    @Size(max = 50, min = 3, message = "{Havayolu.isim.invalid}")
-    @NotEmpty(message = "Lutfen isim girin")
+    @Size(max = 50, min = 3)
+    @NotEmpty()
     private String isim;
-    @Size(max = 200, min = 3, message = "{Havayolu.adres.invalid}")
-    @NotEmpty(message = "Lutfen isim girin")
+    @Size(max = 200, min = 3)
+    @NotEmpty()
     private String adres;
-    @Size(max = 50, min = 3, message = "{Havayolu.sehir.invalid}")
-    @NotEmpty(message = "Lutfen isim girin")
+    @Size(max = 50, min = 3)
+    @NotEmpty()
     private String sehir;
 
     private Boolean aktifMi=Boolean.TRUE;
