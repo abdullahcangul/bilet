@@ -9,15 +9,18 @@ import com.cngl.bilet.dto.BiletRequestDto;
 import com.cngl.bilet.dto.BiletResponseDto;
 import com.cngl.bilet.dto.EngelliRotaResponseDto;
 import com.cngl.bilet.entity.Bilet;
+import com.cngl.bilet.entity.Takvim;
 import com.cngl.bilet.repository.BiletRepository;
 import com.cngl.bilet.repository.KoltukRepository;
 import com.cngl.bilet.repository.MusteriRepository;
 import com.cngl.bilet.repository.SeferRepository;
+import com.cngl.bilet.repository.TakvimRepository;
 import com.cngl.bilet.service.BiletService;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class BiletServiceImpl implements BiletService {
@@ -26,6 +29,7 @@ public class BiletServiceImpl implements BiletService {
     private final MusteriRepository musteriRepository;
     private final SeferRepository seferRepository;
     private final KoltukRepository koltukRepository;
+    private final TakvimRepository takvimRepository;
     private final ModelMapper modelMapper;
 
     public BiletServiceImpl(
@@ -33,11 +37,13 @@ public class BiletServiceImpl implements BiletService {
         MusteriRepository musteriRepository,
         SeferRepository seferRepository,
         KoltukRepository koltukRepository,
+        TakvimRepository takvimRepository,
         ModelMapper modelMapper) {
             this.biletRepository=biletRepository;
             this.musteriRepository=musteriRepository;
             this.seferRepository=seferRepository;
             this.koltukRepository=koltukRepository;
+            this.takvimRepository=takvimRepository;
             this.modelMapper = modelMapper;
     }
 
@@ -84,11 +90,14 @@ public class BiletServiceImpl implements BiletService {
             orElseThrow(()->new Exception("Koltuk bilgisine ulasılamadı")));
         return bilet;
     }
-
+    @Transactional
     public Boolean aktifPasifEt(Long id) throws Exception {
         Bilet bilet=biletRepository.findById(id).
             orElseThrow(()->new Exception("Engelli Rota bulanamadı"));
-        LocalDateTime biletZamani=bilet.getSefer().getTakvim().getKalkisZamanı();
+        Long takvim_id=bilet.getSefer().getTakvim().getId();
+        Takvim takvim=takvimRepository.findById(takvim_id).
+            orElseThrow(()->new Exception("Takvim Bulunamadi bulanamadı"));
+        LocalDateTime biletZamani=takvim.getKalkisZamanı();
         Long kalanSaat=ChronoUnit.HOURS.between(biletZamani, LocalDateTime.now());
         if(kalanSaat<2l){
             throw new Exception("Bilet iptal edilemez");
