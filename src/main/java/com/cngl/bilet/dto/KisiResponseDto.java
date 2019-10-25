@@ -8,8 +8,6 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Size;
 
-import com.cngl.bilet.entity.Kullanici;
-import com.cngl.bilet.entity.Musteri;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -37,6 +35,6 @@ public class KisiResponseDto {
     @Column(name = "dogum_tarihi")
     private LocalDate dogumTarihi;
 
-    private Kullanici kullanici;
-    private Musteri musteri;    
+    private KullaniciRequestDto kullanici;
+    private MusteriRequestDto musteri;    
 }

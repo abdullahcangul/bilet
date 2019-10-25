@@ -3,7 +3,6 @@ package com.cngl.bilet.dto;
 import java.util.List;
 
 import com.cngl.bilet.entity.Kisi;
-import com.cngl.bilet.entity.Rol;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,5 +17,5 @@ public class KullaniciResponseDto {
  
     private Kisi kisi;
 
-    private List<Rol> roller;
+    private List<RolRequestDto> roller;
 }

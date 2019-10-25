@@ -1,9 +1,6 @@
 package com.cngl.bilet.dto;
 
 
-import com.cngl.bilet.entity.Koltuk;
-import com.cngl.bilet.entity.Musteri;
-import com.cngl.bilet.entity.Sefer;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,7 +16,7 @@ public class BiletResponseDto {
     private String pnr;
     private Integer koltukNo;
 
-    private Musteri musteri;
-    private Sefer sefer;
-    private Koltuk koltuk;
+    private MusteriRequestDto musteri;
+    private SeferRequestDto sefer;
+    private KoltukRequestDto koltuk;
 }

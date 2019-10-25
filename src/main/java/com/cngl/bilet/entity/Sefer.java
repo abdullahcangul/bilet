@@ -92,4 +92,9 @@ public class Sefer implements Serializable {
     )
     private List<Bilet> biletler;
 
+    @OneToMany(
+        fetch = FetchType.LAZY,
+        mappedBy = "sefer"
+    )
+    private List<Koltuk> koltuklar;
 }

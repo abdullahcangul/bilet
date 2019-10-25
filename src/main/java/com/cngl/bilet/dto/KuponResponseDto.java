@@ -3,8 +3,6 @@ package com.cngl.bilet.dto;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
-import com.cngl.bilet.entity.Havayolu;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,6 +19,6 @@ public class KuponResponseDto {
     private Float indirimMiktari;
     private Boolean yuzdeliIndirimMi;
 
-    private Havayolu havayolu;
+    private HavayoluRequestDto havayolu;
     
 }

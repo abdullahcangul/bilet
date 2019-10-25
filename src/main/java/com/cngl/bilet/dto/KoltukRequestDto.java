@@ -25,6 +25,6 @@ public class KoltukRequestDto {
     private BigDecimal koltukUcreti;
 
     @NotNull
-    private Long ucakId;
+    private Long seferId;
     
 }

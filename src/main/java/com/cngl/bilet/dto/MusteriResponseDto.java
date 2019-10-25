@@ -1,7 +1,6 @@
 package com.cngl.bilet.dto;
 
 
-import com.cngl.bilet.entity.Kisi;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,5 +14,5 @@ public class MusteriResponseDto {
     private String pnr;
     private Integer koltukNo;
 
-    private Kisi kisi; 
+    private KisiRequestDto kisi; 
 }

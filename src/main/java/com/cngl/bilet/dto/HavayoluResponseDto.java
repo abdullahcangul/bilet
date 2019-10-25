@@ -5,10 +5,6 @@ import java.util.List;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
-import com.cngl.bilet.entity.EngelliRota;
-import com.cngl.bilet.entity.Kupon;
-import com.cngl.bilet.entity.Sefer;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,7 +20,7 @@ public class HavayoluResponseDto {
     @NotEmpty(message = "Lutfen isim girin")
     private String isim;
 
-    private List<Sefer> seferler;
-    private List<Kupon> kuponlar;
-    private List<EngelliRota> engelliRotalar;
+    private List<SeferRequestDto> seferler;
+    private List<KuponRequestDto> kuponlar;
+    private List<EngelliRotaRequestDto> engelliRotalar;
 }

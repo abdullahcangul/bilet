@@ -5,8 +5,6 @@ import java.util.List;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
-import com.cngl.bilet.entity.Sefer;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,6 +26,6 @@ public class HavalimaniResponseDto {
     @NotEmpty(message = "Lutfen sehir girin")
     private String sehir;
 
-    private List<Sefer> kalkishavalimaniSeferleri;
-    private List<Sefer> inishavalimaniSeferleri;
+    private List<SeferRequestDto> kalkishavalimaniSeferleri;
+    private List<SeferRequestDto> inishavalimaniSeferleri;
 }

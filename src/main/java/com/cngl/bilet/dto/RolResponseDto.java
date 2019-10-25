@@ -5,7 +5,6 @@ import java.util.List;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
-import com.cngl.bilet.entity.Kullanici;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,5 +20,5 @@ public class RolResponseDto {
     @NotEmpty(message = "Lutfen isim girin")
     private String isim;
 
-    private List<Kullanici> kullanicilar;
+    private List<KullaniciRequestDto> kullanicilar;
 }

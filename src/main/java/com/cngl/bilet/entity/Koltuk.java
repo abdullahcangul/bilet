@@ -45,8 +45,8 @@ public class Koltuk implements Serializable {
         cascade = CascadeType.ALL,
         optional = false
     )
-    @JoinColumn(name = "ucak_id")
-    private Ucak ucak;
+    @JoinColumn(name = "sefer_id")
+    private Sefer sefer;
 
     
     @OneToOne(mappedBy = "koltuk")

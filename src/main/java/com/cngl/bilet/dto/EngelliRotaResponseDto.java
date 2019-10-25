@@ -6,7 +6,6 @@ import java.util.List;
 
 import javax.validation.constraints.NotNull;
 
-import com.cngl.bilet.entity.Havayolu;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,5 +22,5 @@ public class EngelliRotaResponseDto {
     @NotNull(message="Kalkis havalimani boş gecilemez")
     private Long inisHavaAlaniId; 
     
-    private List<Havayolu> havayollari;
+    private List<HavayoluRequestDto> havayollari;
 }

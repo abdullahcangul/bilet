@@ -6,7 +6,7 @@ import com.cngl.bilet.dto.KoltukRequestDto;
 import com.cngl.bilet.dto.KoltukResponseDto;
 import com.cngl.bilet.entity.Koltuk;
 import com.cngl.bilet.repository.KoltukRepository;
-import com.cngl.bilet.repository.UcakRepository;
+import com.cngl.bilet.repository.SeferRepository;
 import com.cngl.bilet.service.KoltukService;
 
 import org.modelmapper.ModelMapper;
@@ -17,15 +17,15 @@ import org.springframework.stereotype.Service;
 public class KoltukServiceImpl implements KoltukService {
 
     private final KoltukRepository koltukRepository;
-    private final UcakRepository ucakRepository;
+    private final SeferRepository seferRepository;
     private final ModelMapper modelMapper;
 
     public KoltukServiceImpl(
         KoltukRepository koltukRepository,
-        UcakRepository ucakRepository,
+        SeferRepository seferRepository,
         ModelMapper modelMapper) {
             this.koltukRepository=koltukRepository;
-            this.ucakRepository=ucakRepository;
+            this.seferRepository=seferRepository;
             this.modelMapper = modelMapper;
     }
 
@@ -42,7 +42,7 @@ public class KoltukServiceImpl implements KoltukService {
     public KoltukResponseDto kaydet(KoltukRequestDto kullaniciRequestDto) throws Exception {
     
         Koltuk koltuk= modelMapper.map(kullaniciRequestDto,Koltuk.class);
-        koltuk=koltugaUcakAta(koltuk,kullaniciRequestDto);
+        koltuk=koltugaSeferAta(koltuk,kullaniciRequestDto);
         return modelMapper.map(koltukRepository.
             save(modelMapper.map(kullaniciRequestDto,Koltuk.class)),KoltukResponseDto.class);
     }
@@ -50,20 +50,20 @@ public class KoltukServiceImpl implements KoltukService {
     public KoltukResponseDto guncelle(KoltukRequestDto kullaniciRequestDto) throws Exception {
         Koltuk koltuk= koltukRepository.findById(kullaniciRequestDto.getId())
             .orElseThrow(()->new Exception(""));
-        koltuk=koltugaUcakAta(koltuk,kullaniciRequestDto);
+        koltuk=koltugaSeferAta(koltuk,kullaniciRequestDto);
         return modelMapper.map(koltukRepository.
             save(modelMapper.map(kullaniciRequestDto,Koltuk.class)),KoltukResponseDto.class);
     }
 
-    private Koltuk koltugaUcakAta(Koltuk koltuk,KoltukRequestDto kullaniciRequestDto)throws Exception{
-        koltuk.setUcak(ucakRepository.findById(kullaniciRequestDto.getUcakId()).
-            orElseThrow(()->new Exception("")));
+    private Koltuk koltugaSeferAta(Koltuk koltuk,KoltukRequestDto kullaniciRequestDto)throws Exception{
+        koltuk.setSefer(seferRepository.findById(kullaniciRequestDto.getSeferId()).
+            orElseThrow(()->new Exception("sefer atanamadı")));
         return koltuk;
     }
 
     public void sil(Long id) throws Exception {
         koltukRepository.delete(
-            koltukRepository.findById(id).orElseThrow(()->new Exception("Engelli Rota bulanamadı"))
+            koltukRepository.findById(id).orElseThrow(()->new Exception("koltuk bulunamadı"))
         );
     }
     

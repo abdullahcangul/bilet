@@ -7,9 +7,6 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.cngl.bilet.entity.Koltuk;
-import com.cngl.bilet.entity.Sefer;
-import com.cngl.bilet.entity.Urun;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -33,7 +30,6 @@ public class UcakResponseDto {
     private BigDecimal kmBasinaBakimMaliyeti;
 
 
-    private List<Sefer> seferler;
-    private List<Koltuk> koltuklar;
-    private List<Urun> urunler;
+    private List<SeferRequestDto> seferler;
+    private List<UrunRequestDto> urunler;
 }

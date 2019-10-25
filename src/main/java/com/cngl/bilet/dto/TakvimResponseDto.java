@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.validation.constraints.NotNull;
 
-import com.cngl.bilet.entity.Sefer;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,5 +21,5 @@ public class TakvimResponseDto {
     @NotNull
     private LocalDateTime varisZamani;
 
-    private List<Sefer> seferler;
+    private List<SeferRequestDto> seferler;
 }

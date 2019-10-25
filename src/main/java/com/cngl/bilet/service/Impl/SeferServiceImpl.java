@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 import com.cngl.bilet.dto.SeferRequestDto;
 import com.cngl.bilet.dto.SeferResponseDto;
 import com.cngl.bilet.dto.SeferSorguRequestDto;
-import com.cngl.bilet.entity.EngelliRota;
 import com.cngl.bilet.entity.Sefer;
 import com.cngl.bilet.repository.EngelliRotaRepository;
 import com.cngl.bilet.repository.HavalimaniRepository;
@@ -64,7 +63,8 @@ public class SeferServiceImpl implements SeferService {
         List<Sefer> seferler=seferRepository.findAll().stream().filter(x->{
             Boolean inisHavalimaniMi=x.getInisHavalimani().getId()==seferSorguRequestDto.getInishavalimaniId();
             Boolean kakisHavalimaniMi=x.getKalkisHavalimani().getId()==seferSorguRequestDto.getKalkisHavalimaniId();
-            Boolean zamanAyniMi=x.getTakvim().getKalkisZamanı()==seferSorguRequestDto.getKalkisZamanı();
+            Boolean zamanAyniMi=x.getTakvim().getKalkisZamanı().toLocalDate().isEqual(seferSorguRequestDto.getKalkisZamanı().toLocalDate());
+
             return (inisHavalimaniMi && kakisHavalimaniMi && zamanAyniMi);
 
         }).collect(Collectors.toList()); 

@@ -53,12 +53,7 @@ public class Ucak implements Serializable {
     ) 
     private List<Sefer> seferler;
 
-    @OneToMany(
-        fetch = FetchType.LAZY,
-        mappedBy = "ucak",
-        orphanRemoval = true
-    )
-    private List<Koltuk> koltuklar;
+
 
     @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private List<Urun> urunler;

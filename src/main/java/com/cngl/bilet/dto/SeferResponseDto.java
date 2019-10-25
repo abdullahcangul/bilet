@@ -6,11 +6,6 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.cngl.bilet.entity.Havalimani;
-import com.cngl.bilet.entity.Havayolu;
-import com.cngl.bilet.entity.Musteri;
-import com.cngl.bilet.entity.Takvim;
-import com.cngl.bilet.entity.Ucak;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,11 +25,11 @@ public class SeferResponseDto {
     private Integer kapiNo;
 
 
-    private List<Musteri> musteriler;
-    private Havalimani kalkisHavalimani;
-    private Havalimani InisHavalimani;
-    private Havayolu havayolu;
-    private Ucak ucak;
-    private Takvim takvim;
+    private List<MusteriRequestDto> musteriler;
+    private HavalimaniRequestDto kalkisHavalimani;
+    private HavalimaniRequestDto InisHavalimani;
+    private HavayoluRequestDto havayolu;
+    private UcakRequestDto ucak;
+    private TakvimRequestDto takvim;
 
 }

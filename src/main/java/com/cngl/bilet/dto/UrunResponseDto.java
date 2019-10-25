@@ -7,7 +7,6 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.cngl.bilet.entity.Ucak;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,5 +23,5 @@ public class UrunResponseDto {
     private String isim;
     @NotNull
     private BigDecimal ucret;
-    private List<Ucak> ucaklar;
+    private List<UcakRequestDto> ucaklar;
 }

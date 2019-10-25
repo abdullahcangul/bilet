@@ -6,8 +6,6 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.cngl.bilet.entity.Bilet;
-import com.cngl.bilet.entity.Ucak;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,8 +25,10 @@ public class KoltukResponseDto {
     @NotNull
     private BigDecimal koltukUcreti;
 
-    private Ucak ucak;
-
-    private Bilet bilet;
+    @Size(max = 50, min = 2, message = "{KoltukRequestDto.sinifi.invalid}")
+    @NotEmpty(message = "Lutfen sinifi girin")
+    private String sinifi;
+    
+    private BiletRequestDto bilet;
     
 }
